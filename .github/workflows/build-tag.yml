@@ -1,0 +1,32 @@
+name: "Build"
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout to project
+        uses: actions/checkout@v6
+
+      - name: Build
+        run: |
+          zip -r "fantbox.fda" logo.svg manifest.json msbatchparser.js msparser.js fantbox-update.json
+          jq -n --arg version "${GITHUB_REF#refs/tags/}" '{versions: {version:($version), distributiveUrl:"https://github.com/alexey-shapilov/fdm-fantbox/releases/download/latest/fantbox.fda", minApiVersion: 6, minFeaturesLevel: 3}}' > fantbox-update.json
+
+      - name: Update Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Latest Build
+          body: "Last start: ${{ github.event.head_commit.message }}"
+          files: |
+            fantbox.fda
+            fantbox-update.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
