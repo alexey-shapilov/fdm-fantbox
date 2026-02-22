@@ -8,5 +8,5 @@
   "mediaParser": true,
   "mediaListParser": true,
   "scripts": ["msparser.js", "msbatchparser.js"],
-  "updateUrl": ""
+  "updateUrl": "https://github.com/alexey-shapilov/fdm-fantbox/releases/download/latest/fantbox-update.json"
 }
