@@ -3,7 +3,7 @@
   "author": "al",
   "name": "fantbox",
   "description": "Provides support for downloading audio from fantbox.net site.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "icon": "logo.svg",
   "mediaParser": true,
   "mediaListParser": true,

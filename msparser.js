@@ -14,7 +14,7 @@ var msParser = (function () {
             protocol: "https",
             audio_ext: "mp3",
             format: "mp3",
-            httpHeaders: {
+            http_headers: {
               Referer: "https://fantbox.net/",
             },
           };
